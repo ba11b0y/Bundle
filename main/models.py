@@ -14,11 +14,9 @@ class User(models.Model):
 
 
 class GS(models.Model):
-
-    user = models.ManyToManyField(User)
     isin = models.CharField(max_length=12)
     return_rate = models.FloatField()
-    date_of_issue = models.DateField()
+    date_of_issue = models.DateField(input_formats=['%d-%b-%Y'])
     date_of_maturity = models.DateField()
     outstanding_stock = models.FloatField()
 
