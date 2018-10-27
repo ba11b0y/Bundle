@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate
 from django.http import HttpResponse,JsonResponse,HttpResponseForbidden
 from django.db import models
 from .models import User
