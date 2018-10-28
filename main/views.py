@@ -27,8 +27,8 @@ class GoalView(APIView):
                 "bundle": [
                     {
                         "returns": "8.5",
-                        "b_alloc": b_alloc,
-                        "t_alloc": t_alloc,
+                        "b_alloc": b_alloc*100,
+                        "t_alloc": t_alloc*100,
                         "maturity_period": diff_years,
                         "name": "Custom Bundle"
                     }
