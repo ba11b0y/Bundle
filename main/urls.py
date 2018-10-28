@@ -5,5 +5,5 @@ app_name =  "main"
 urlpatterns = [
 
     path('ping',ping),
-    path('goals/<str:user>/',goals),
+    path('goals/new/',GoalView.as_view()),
 ]

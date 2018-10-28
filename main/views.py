@@ -1,16 +1,35 @@
-from django.shortcuts import render
-from django.http import HttpResponse,JsonResponse,HttpResponseForbidden
-from django.db import models
-from .models import User
-# Create your views here.
-def ping(request):
-    html = "<html><body>Pong.</body></html>"
-    return HttpResponse(html)
-def goals(request, user):
-    try:
-        user_check = User.objects.get(email=user)
-    except Exception as e:
-        html = "<html><body>Debug:    {}</body></html>".format(e)
-        return HttpResponse(html)
-        #return HttpResponseForbidden
-    return JsonResponse({'Data':str(user_check)})
+from _datetime import datetime
+
+from django.http import HttpResponse, JsonResponse, HttpResponseForbidden
+
+from main.helpers import suggest_bundle
+from .models import User, Goal
+from rest_framework.views import APIView
+
+
+class GoalView(APIView):
+
+    def get(self, request):
+        # HASURA API CALLS
+        pass
+
+    def post(self, request):
+
+        _type = request.data["_type"]
+        amount = float(request.data["amount"])
+        investment_amount = float(request.data["investment_amount"])
+        target_date = datetime.strptime(request.data["target_date"], "%d-%m-%Y").date() #dd-mm-YYYY
+        diff_years = (target_date - datetime.today().date()).days // 365
+        print(diff_years)
+        b_alloc, t_alloc = suggest_bundle(diff_years, investment_amount, amount)
+
+        return JsonResponse(
+            {
+                "bundle": {
+                    "returns": "8.5",
+                    "b_alloc": b_alloc,
+                    "t_alloc": t_alloc,
+                    "maturity_period": diff_years
+                }
+            }
+        )
