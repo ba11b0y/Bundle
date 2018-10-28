@@ -8,11 +8,9 @@ def ping(request):
     return HttpResponse(html)
 def goals(request, user):
     try:
-        user_check = User(email=user)
-
-        return JsonResponse({'Data':str(user_check)})
-
+        user_check = User.objects.get(email=user)
     except Exception as e:
-        html = "<html><body>{}</body></html>".format(e)
+        html = "<html><body>Debug:    {}</body></html>".format(e)
         return HttpResponse(html)
         #return HttpResponseForbidden
+    return JsonResponse({'Data':str(user_check)})
