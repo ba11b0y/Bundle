@@ -26,7 +26,7 @@ The primary motivating factors to create bundle were as follows:
 
 ![Custom](https://github.com/invinciblycool/Bundle/blob/master/snaps/custom.png)
 
-The full design prototype can be found [here](https://xd.adobe.com/view/fa91ca0f-14ca-4456-4089-6b90bfb9ac0e-8ca0/?hints=off)
+The full design prototype can be found [here](https://xd.adobe.com/view/e3805f9c-b79d-4824-6531-53aaa8b0f3b1-95b1/?fullscreen&hints=off)
 
 
 #### Design Credits to [Arpit Jain](https://github.com/ArpitKotecha)
